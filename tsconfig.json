@@ -1,0 +1,29 @@
+{
+    "compilerOptions": {
+        "module": "NodeNext",
+        "esModuleInterop": true,
+        "target": "es6",
+        "noImplicitAny": true,
+        "moduleResolution": "node",
+        "sourceMap": true,
+        "outDir": "dist",
+        "baseUrl": ".",
+        "paths": {
+            "*": [
+                "node_modules/*"
+            ],
+            "@base/*": [
+                "src/*"
+            ],
+            "@api/*": [
+                "src/app/*"
+            ]
+        },
+        "emitDecoratorMetadata": true,
+        "experimentalDecorators": true
+    },
+    "include": [
+        "src/*",
+        "src/**/**/*.ts",
+        "src/db/models/*"]
+}
