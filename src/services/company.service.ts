@@ -1,6 +1,8 @@
 import Company from '../db/models/company';
 import { sequelize } from '../db/models/index';
 import { Transaction } from 'sequelize';
+import { logger } from '../utils/logger/Logger';
+
 import {
   CompanyAttributes,
   CompanyInstance,
@@ -12,17 +14,15 @@ export class CompanyService {
     const promise = new Promise<CompanyInstance>(
       (resolve, reject) => {
         sequelize.transaction((t: Transaction) => {
-          console.log("Sindy Alguna info", CompanyData);
           const result = Company.create(CompanyData, {
             include: [{ model: Employee, as: 'employees' }]
           })
             .then((company: CompanyInstance) => {
-              //logger.info(`Created product with name ${CompanyAttributes.name}.`);
+              logger.info("Created product");
               resolve(company);
             })
             .catch((error: Error) => {
-              console.log(error);
-              //logger.error(error.message);
+              logger.error(error.message);
               reject(error);
             });
           return result;
@@ -44,12 +44,10 @@ export class CompanyService {
             }
           ]
         }).then((companies: CompanyInstance[]) => {
-          //logger.info(`Created product with name ${CompanyAttributes.name}.`);
           resolve(companies);
         })
           .catch((error: Error) => {
-            console.log(error);
-            //logger.error(error.message);
+            logger.error(error.message);
             reject(error);
           });
         return result;
@@ -72,12 +70,10 @@ export class CompanyService {
             }
           ]
         }).then((companies: CompanyInstance[]) => {
-          //logger.info(`Created product with name ${CompanyAttributes.name}.`);
           resolve(companies);
         })
           .catch((error: Error) => {
-            console.log(error);
-            //logger.error(error.message);
+            logger.error(error.message);
             reject(error);
           });
         return result;

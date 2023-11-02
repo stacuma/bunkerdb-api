@@ -2,6 +2,15 @@
 
 This module provides a basic Rest API to get information about complanies and their employees. Also it includes en endpoint to create new companies with or without employees.
 
+## Stack.
+ <ul>
+ <li>NodeJs</li>
+ <li>TypeScript</li>
+ <li>Mysql</li>
+ <li>Sequelize ORM</li>
+ <li>Pino Logger</li>
+ </ul>
+
 ## Setup.
 
 1. Using the `.env.example` file, create a new file and define the required env variables to connect with database.
